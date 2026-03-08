@@ -9,6 +9,11 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <artifactId>DevOpsClassCodes</artifactId>
 <version>1.0-SNAPSHOT</version>
 
+<properties>
+<maven.compiler.source>17</maven.compiler.source>
+<maven.compiler.target>17</maven.compiler.target>
+</properties>
+
 <dependencies>
 
 <!-- Selenium -->
@@ -26,6 +31,60 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <scope>test</scope>
 </dependency>
 
+<!-- SLF4J Logger -->
+<dependency>
+<groupId>org.slf4j</groupId>
+<artifactId>slf4j-api</artifactId>
+<version>1.7.36</version>
+</dependency>
+
+<dependency>
+<groupId>org.slf4j</groupId>
+<artifactId>slf4j-simple</artifactId>
+<version>1.7.36</version>
+</dependency>
+
+<!-- Apache Commons BeanUtils -->
+<dependency>
+<groupId>commons-beanutils</groupId>
+<artifactId>commons-beanutils</artifactId>
+<version>1.9.4</version>
+</dependency>
+
+<!-- Apache Commons Lang -->
+<dependency>
+<groupId>org.apache.commons</groupId>
+<artifactId>commons-lang3</artifactId>
+<version>3.12.0</version>
+</dependency>
+
+<!-- Servlet API -->
+<dependency>
+<groupId>javax.servlet</groupId>
+<artifactId>javax.servlet-api</artifactId>
+<version>4.0.1</version>
+<scope>provided</scope>
+</dependency>
+
+<!-- Vaadin Framework -->
+<dependency>
+<groupId>com.vaadin</groupId>
+<artifactId>vaadin-server</artifactId>
+<version>8.14.3</version>
+</dependency>
+
+<dependency>
+<groupId>com.vaadin</groupId>
+<artifactId>vaadin-client-compiled</artifactId>
+<version>8.14.3</version>
+</dependency>
+
+<dependency>
+<groupId>com.vaadin</groupId>
+<artifactId>vaadin-themes</artifactId>
+<version>8.14.3</version>
+</dependency>
+
 </dependencies>
 
 <build>
@@ -36,10 +95,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <groupId>org.apache.maven.plugins</groupId>
 <artifactId>maven-compiler-plugin</artifactId>
 <version>3.11.0</version>
-<configuration>
-<source>17</source>
-<target>17</target>
-</configuration>
 </plugin>
 
 <!-- PMD Code Quality -->
@@ -63,7 +118,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 </plugin>
 
-<!-- Jacoco Code Coverage -->
+<!-- Code Coverage -->
 <plugin>
 <groupId>org.jacoco</groupId>
 <artifactId>jacoco-maven-plugin</artifactId>
