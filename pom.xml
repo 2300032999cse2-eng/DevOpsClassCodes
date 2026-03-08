@@ -8,6 +8,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <groupId>DevOps</groupId>
 <artifactId>DevOpsClassCodes</artifactId>
 <version>1.0-SNAPSHOT</version>
+<packaging>war</packaging>
 
 <properties>
 <maven.compiler.source>17</maven.compiler.source>
@@ -31,7 +32,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <scope>test</scope>
 </dependency>
 
-<!-- SLF4J Logger -->
+<!-- Logging -->
 <dependency>
 <groupId>org.slf4j</groupId>
 <artifactId>slf4j-api</artifactId>
@@ -44,14 +45,13 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <version>1.7.36</version>
 </dependency>
 
-<!-- Apache Commons BeanUtils -->
+<!-- Apache Commons -->
 <dependency>
 <groupId>commons-beanutils</groupId>
 <artifactId>commons-beanutils</artifactId>
 <version>1.9.4</version>
 </dependency>
 
-<!-- Apache Commons Lang -->
 <dependency>
 <groupId>org.apache.commons</groupId>
 <artifactId>commons-lang3</artifactId>
@@ -66,7 +66,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <scope>provided</scope>
 </dependency>
 
-<!-- Vaadin Framework -->
+<!-- Vaadin Dependencies -->
 <dependency>
 <groupId>com.vaadin</groupId>
 <artifactId>vaadin-server</artifactId>
@@ -85,37 +85,42 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <version>8.14.3</version>
 </dependency>
 
+<!-- IMPORTANT: Supports com.vaadin.v7.* imports -->
+<dependency>
+<groupId>com.vaadin</groupId>
+<artifactId>vaadin-compatibility-server</artifactId>
+<version>8.14.3</version>
+</dependency>
+
 </dependencies>
 
 <build>
 <plugins>
 
-<!-- Java Compiler -->
+<!-- Compiler -->
 <plugin>
 <groupId>org.apache.maven.plugins</groupId>
 <artifactId>maven-compiler-plugin</artifactId>
 <version>3.11.0</version>
 </plugin>
 
-<!-- PMD Code Quality -->
-<plugin>
-<groupId>org.apache.maven.plugins</groupId>
-<artifactId>maven-pmd-plugin</artifactId>
-<version>3.21.0</version>
-</plugin>
-
-<!-- TestNG Runner -->
+<!-- Run TestNG -->
 <plugin>
 <groupId>org.apache.maven.plugins</groupId>
 <artifactId>maven-surefire-plugin</artifactId>
 <version>3.2.5</version>
-
 <configuration>
 <suiteXmlFiles>
 <suiteXmlFile>src/test/resources/RegressionRunner.xml</suiteXmlFile>
 </suiteXmlFiles>
 </configuration>
+</plugin>
 
+<!-- PMD -->
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-pmd-plugin</artifactId>
+<version>3.21.0</version>
 </plugin>
 
 <!-- Code Coverage -->
@@ -125,7 +130,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <version>0.8.11</version>
 
 <executions>
-
 <execution>
 <goals>
 <goal>prepare-agent</goal>
@@ -139,7 +143,6 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <goal>report</goal>
 </goals>
 </execution>
-
 </executions>
 
 </plugin>
