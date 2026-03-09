@@ -32,6 +32,14 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <scope>test</scope>
 </dependency>
 
+<!-- JUnit (required for project test files) -->
+<dependency>
+<groupId>junit</groupId>
+<artifactId>junit</artifactId>
+<version>4.13.2</version>
+<scope>test</scope>
+</dependency>
+
 <!-- Logging -->
 <dependency>
 <groupId>org.slf4j</groupId>
@@ -58,7 +66,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <version>3.12.0</version>
 </dependency>
 
-<!-- Servlet API -->
+<!-- Servlet -->
 <dependency>
 <groupId>javax.servlet</groupId>
 <artifactId>javax.servlet-api</artifactId>
@@ -66,7 +74,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <scope>provided</scope>
 </dependency>
 
-<!-- Vaadin Dependencies -->
+<!-- Vaadin -->
 <dependency>
 <groupId>com.vaadin</groupId>
 <artifactId>vaadin-server</artifactId>
@@ -85,7 +93,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <version>8.14.3</version>
 </dependency>
 
-<!-- IMPORTANT: Supports com.vaadin.v7.* imports -->
+<!-- REQUIRED for com.vaadin.v7.* imports -->
 <dependency>
 <groupId>com.vaadin</groupId>
 <artifactId>vaadin-compatibility-server</artifactId>
@@ -97,23 +105,18 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <build>
 <plugins>
 
-<!-- Compiler -->
+<!-- Java Compiler -->
 <plugin>
 <groupId>org.apache.maven.plugins</groupId>
 <artifactId>maven-compiler-plugin</artifactId>
 <version>3.11.0</version>
 </plugin>
 
-<!-- Run TestNG -->
+<!-- Test Runner -->
 <plugin>
 <groupId>org.apache.maven.plugins</groupId>
 <artifactId>maven-surefire-plugin</artifactId>
 <version>3.2.5</version>
-<configuration>
-<suiteXmlFiles>
-<suiteXmlFile>src/test/resources/RegressionRunner.xml</suiteXmlFile>
-</suiteXmlFiles>
-</configuration>
 </plugin>
 
 <!-- PMD -->
@@ -123,7 +126,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 <version>3.21.0</version>
 </plugin>
 
-<!-- Code Coverage -->
+<!-- JaCoCo -->
 <plugin>
 <groupId>org.jacoco</groupId>
 <artifactId>jacoco-maven-plugin</artifactId>
