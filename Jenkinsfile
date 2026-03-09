@@ -1,60 +1,51 @@
-
 pipeline{
     tools{
-        jdk 'myjava'
-        maven 'mymaven'
+        jdk 'JDK17'
+        maven 'Maven-3'
     }
-	agent any
-      stages{
-           stage('Checkout'){
-	    
-               steps{
-		 echo 'cloning..'
-                 git 'https://github.com/Sonal0409/DevOpsClassCodes.git'
-              }
-          }
-          stage('Compile'){
-             
-              steps{
-                  echo 'compiling..'
-                  sh 'mvn compile'
-	      }
-          }
-          stage('CodeReview'){
-		  
-              steps{
-		    
-		  echo 'codeReview'
-                  sh 'mvn pmd:pmd'
-              }
-          }
-           stage('UnitTest'){
-		  
-              steps{
-	         echo 'Testing'
-                  sh 'mvn test'
-              }
-               post {
-               success {
-                   junit 'target/surefire-reports/*.xml'
-               }
-           }	
-          }
-           stage('MetricCheck'){
-              
-              steps{
-                  sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml'
-              }
-              
-          }
-          stage('Package'){
-		  
-              steps{
-		  
-                  sh 'mvn package'
-              }
-          }
-	     
-          
-      }
+
+    agent any
+
+    stages{
+
+        stage('Checkout'){
+            steps{
+                echo 'Cloning repository...'
+                git 'https://github.com/2300032999cse2-eng/DevOpsClassCodes.git'
+            }
+        }
+
+        stage('Compile'){
+            steps{
+                echo 'Compiling project...'
+                sh 'mvn compile'
+            }
+        }
+
+        stage('Code Review'){
+            steps{
+                echo 'Running PMD analysis...'
+                sh 'mvn pmd:pmd'
+            }
+        }
+
+        stage('Unit Test'){
+            steps{
+                echo 'Running tests...'
+                sh 'mvn test'
+            }
+            post{
+                success{
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+
+        stage('Package'){
+            steps{
+                echo 'Packaging application...'
+                sh 'mvn package'
+            }
+        }
+    }
 }
